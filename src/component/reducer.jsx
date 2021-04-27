@@ -1,7 +1,7 @@
 const reducer = function (state = [], { type, payload }) {
   let newState = [...state];
 
-  let currenCase =
+  let currenCaseId =
     type === "DLT" || type === "CHNG"
       ? newState.findIndex((element) => element.id === payload)
       : undefined;
@@ -11,11 +11,11 @@ const reducer = function (state = [], { type, payload }) {
       return [...state, payload];
 
     case "DLT":
-      newState.splice(currenCase, 1);
+      newState.splice(currenCaseId, 1);
       return newState;
 
     case "CHNG":
-      newState[currenCase].important = !newState[currenCase].important;
+      newState[currenCaseId].important = !newState[currenCaseId].important;
       return newState;
     default:
       return newState;

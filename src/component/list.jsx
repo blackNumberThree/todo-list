@@ -2,6 +2,7 @@
 import ListItem from "./list-item";
 
 export function List(props) {
+  // accept massive and filter list and show handled massive
   let { caseMassive, currentFilterList } = props;
 
   if (currentFilterList.importantFilter) {
