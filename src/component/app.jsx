@@ -3,7 +3,7 @@ import { createStore } from "redux";
 import reducer from "./reducer";
 import { Provider } from "react-redux";
 import { AddBlock } from "./add-block";
-import { SirchInput } from "./sirch-input";
+import { SirchInput } from "./sirch-panel";
 
 export const store = createStore(reducer);
 
