@@ -48,7 +48,11 @@ export function SirchInput({ caseMassive }) {
           only important
         </button>
         <br />
-        <input type="text" onChange={serchChange} />
+        <input
+          type="text"
+          onChange={serchChange}
+          placeholder="input case what you are looking for "
+        />
       </div>
       <List caseMassive={caseMassive} currentFilterList={currentFilterList} />
     </>

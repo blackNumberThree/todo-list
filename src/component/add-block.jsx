@@ -24,7 +24,12 @@ export function AddBlock() {
   }
   return (
     <div className="input-block">
-      <input type="text" onChange={formChange} value={inputValue} />
+      <input
+        type="text"
+        onChange={formChange}
+        value={inputValue}
+        placeholder="input new case"
+      />
       <button className="addCase" onClick={addCase} value={inputValue}>
         ADD
       </button>
