@@ -11,7 +11,7 @@ export function AddBlock() {
 
   function addCase() {
     let newCase = {
-      label: inputValue + idCounter,
+      label: inputValue,
       important: false,
       id: idCounter,
     };
