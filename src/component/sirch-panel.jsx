@@ -51,7 +51,7 @@ export function SirchInput({ caseMassive }) {
         <input
           type="text"
           onChange={serchChange}
-          placeholder="input case what you are looking for "
+          placeholder="input what you are looking "
         />
       </div>
       <List caseMassive={caseMassive} currentFilterList={currentFilterList} />
