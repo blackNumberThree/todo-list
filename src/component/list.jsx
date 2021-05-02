@@ -1,17 +1,16 @@
+import { ListItem } from "./List-item";
 
-import ListItem from "./List-item";
-
-export function List(props) {
+export function List({ currentStore }) {
   // accept massive and filter list and show handled massive
-  let { caseMassive, currentFilterList } = props;
+  let { caseMassive, filterList } = currentStore;
 
-  if (currentFilterList.importantFilter) {
+  if (filterList.importantFilter) {
     caseMassive = caseMassive.filter((element) => element.important === true);
   }
 
-  if (currentFilterList.inputFilter) {
+  if (filterList.inputFilter) {
     caseMassive = caseMassive.filter(
-      (element) => element.label.includes(currentFilterList.inputValue) === true
+      (element) => element.label.includes(filterList.inputValue) === true
     );
   }
   return (

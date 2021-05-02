@@ -1,4 +1,4 @@
-import { store } from "./App";
+import { store } from "./component/App";
 
 export const add = (prop) => {
   store.dispatch({
@@ -20,6 +20,7 @@ export const importantChange = (prop) => {
     payload: prop,
   });
 };
+
 export const setFilters = (prop) => {
   store.dispatch({
     type: "setFilters",

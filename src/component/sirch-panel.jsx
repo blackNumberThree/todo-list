@@ -1,32 +1,25 @@
-import { useState } from "react";
-import { List } from "./List";
+import { setFilters } from "../action-creator";
 
-export function SirchInput({ caseMassive }) {
-  let filterList = {
-    inputFilter: false,
-    inputValue: "",
-    importantFilter: false,
-  };
-
-  let [currentFilterList, setCurrentFilterList] = useState(filterList);
+export function SirchInput(props) {
+  let filterList = props.currentStore.filterList;
 
   function showImportant() {
-    setCurrentFilterList({ ...currentFilterList, importantFilter: true });
+    setFilters({ ...filterList, importantFilter: true });
   }
   function showAll() {
-    setCurrentFilterList({ ...currentFilterList, importantFilter: false });
+    setFilters({ ...filterList, importantFilter: false });
   }
 
   function serchChange(event) {
     if (event.target.value !== "") {
-      setCurrentFilterList({
-        ...currentFilterList,
+      setFilters({
+        ...filterList,
         inputFilter: true,
         inputValue: event.target.value,
       });
     } else {
-      setCurrentFilterList({
-        ...currentFilterList,
+      setFilters({
+        ...filterList,
         inputFilter: false,
         inputValue: "",
       });
@@ -37,13 +30,13 @@ export function SirchInput({ caseMassive }) {
     <>
       <div className="find-block">
         <button
-          className={currentFilterList.importantFilter ? "" : "red-shadow"}
+          className={filterList.importantFilter ? "" : "red-shadow"}
           onClick={showAll}
         >
           All case
         </button>
         <button
-          className={currentFilterList.importantFilter ? "red-shadow" : ""}
+          className={filterList.importantFilter ? "red-shadow" : ""}
           onClick={showImportant}
         >
           only important
@@ -55,7 +48,6 @@ export function SirchInput({ caseMassive }) {
           placeholder="input what you are looking "
         />
       </div>
-      <List caseMassive={caseMassive} currentFilterList={currentFilterList} />
     </>
   );
 }

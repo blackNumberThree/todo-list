@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { add } from "./action-creator";
+import { add } from "../action-creator";
 // variable for create if for new case
-let idCounter = 0;
 
 export function AddBlock() {
   let [inputValue, useinputValue] = useState("");
@@ -15,10 +14,8 @@ export function AddBlock() {
     let newCase = {
       label: inputValue,
       important: false,
-      id: idCounter,
+      id: Date.now(),
     };
-
-    idCounter = idCounter + 1;
 
     add(newCase);
 

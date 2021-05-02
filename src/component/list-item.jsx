@@ -1,7 +1,7 @@
 import React from "react";
-import { del, importantChange } from "./action-creator";
+import { del, importantChange } from "../action-creator";
 
-function ListItem({ element }) {
+export function ListItem({ element }) {
   let { label, important, id } = element;
 
   function deleteElement() {
@@ -10,7 +10,7 @@ function ListItem({ element }) {
   function changeElement() {
     importantChange(id);
   }
-  
+
   return (
     <li className={important ? "important list-item" : "list-item"}>
       <button className="button-important" onClick={changeElement}>
@@ -23,4 +23,3 @@ function ListItem({ element }) {
     </li>
   );
 }
-export default ListItem;
