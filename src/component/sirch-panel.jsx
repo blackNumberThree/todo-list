@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { List } from "./list";
+import { List } from "./List";
 
 export function SirchInput({ caseMassive }) {
   let filterList = {
@@ -9,6 +9,7 @@ export function SirchInput({ caseMassive }) {
   };
 
   let [currentFilterList, setCurrentFilterList] = useState(filterList);
+
   function showImportant() {
     setCurrentFilterList({ ...currentFilterList, importantFilter: true });
   }

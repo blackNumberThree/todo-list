@@ -1,5 +1,5 @@
 
-import ListItem from "./list-item";
+import ListItem from "./List-item";
 
 export function List(props) {
   // accept massive and filter list and show handled massive

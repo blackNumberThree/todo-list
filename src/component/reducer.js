@@ -1,4 +1,7 @@
-const reducer = function (state = [], { type, payload }) {
+const reducer = function (
+  state = { caseMassive: [], filter: {} },
+  { type, payload }
+) {
   let newState = [...state];
 
   let currenCaseId =

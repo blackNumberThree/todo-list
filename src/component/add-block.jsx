@@ -9,6 +9,7 @@ export function AddBlock() {
   function formChange(event) {
     useinputValue(event.target.value);
   }
+
   // created new case and send it to reduser
   function addCase() {
     let newCase = {
@@ -16,6 +17,7 @@ export function AddBlock() {
       important: false,
       id: idCounter,
     };
+
     idCounter = idCounter + 1;
 
     add(newCase);
