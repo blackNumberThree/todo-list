@@ -1,24 +1,26 @@
-import { setFilters } from "../action-creator";
+import { mapDispatchToPropsFilter as mapDispatchToProps } from "../action-creator";
+import { connect } from "react-redux";
 
-export function SirchInput(props) {
-  let filterList = props.currentStore.filterList;
+function CreateSirchInput({ dispatchFilter, currentStore }) {
+  console.log(currentStore);
+  let filterList = currentStore.filterList;
 
   function showImportant() {
-    setFilters({ ...filterList, importantFilter: true });
+    dispatchFilter({ ...filterList, importantFilter: true });
   }
   function showAll() {
-    setFilters({ ...filterList, importantFilter: false });
+    dispatchFilter({ ...filterList, importantFilter: false });
   }
 
   function serchChange(event) {
     if (event.target.value !== "") {
-      setFilters({
+      dispatchFilter({
         ...filterList,
         inputFilter: true,
         inputValue: event.target.value,
       });
     } else {
-      setFilters({
+      dispatchFilter({
         ...filterList,
         inputFilter: false,
         inputValue: "",
@@ -51,3 +53,5 @@ export function SirchInput(props) {
     </>
   );
 }
+
+export let SirchInput = connect(null, mapDispatchToProps)(CreateSirchInput);

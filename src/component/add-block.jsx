@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { add } from "../action-creator";
-// variable for create if for new case
+import { connect } from "react-redux";
+import { mapDispatchToPropsAdd as mapDispatchToProps } from "../action-creator";
 
-export function AddBlock() {
+
+function CreateAddBlock({ dispatchNewCase }) {
   let [inputValue, useinputValue] = useState("");
 
   function formChange(event) {
@@ -17,7 +18,7 @@ export function AddBlock() {
       id: Date.now(),
     };
 
-    add(newCase);
+    dispatchNewCase(newCase);
 
     useinputValue("");
   }
@@ -35,3 +36,5 @@ export function AddBlock() {
     </div>
   );
 }
+
+export let AddBlock = connect(null, mapDispatchToProps)(CreateAddBlock);

@@ -1,14 +1,15 @@
 import React from "react";
-import { del, importantChange } from "../action-creator";
+import { connect } from "react-redux";
+import { mapDispatchToPropsDelChange as mapDispatchToProps } from "../action-creator";
 
-export function ListItem({ element }) {
+function CreateListItem({ element, dispatchDel, dispathChange }) {
   let { label, important, id } = element;
 
   function deleteElement() {
-    del(id);
+    dispatchDel(id);
   }
   function changeElement() {
-    importantChange(id);
+    dispathChange(id);
   }
 
   return (
@@ -23,3 +24,5 @@ export function ListItem({ element }) {
     </li>
   );
 }
+
+export let ListItem = connect(null, mapDispatchToProps)(CreateListItem);
