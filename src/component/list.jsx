@@ -1,23 +1,33 @@
 import { ListItem } from "./List-item";
+import { connect } from "react-redux";
 
-export function List({ currentStore }) {
+
+function CreateList({ filterList, caseMassive }) {
   // accept massive and filter list and show handled massive
-  let { caseMassive, filterList } = currentStore;
+  let newMassive = caseMassive;
 
   if (filterList.importantFilter) {
-    caseMassive = caseMassive.filter((element) => element.important === true);
+    newMassive = newMassive.filter((element) => element.important === true);
   }
 
   if (filterList.inputFilter) {
-    caseMassive = caseMassive.filter(
+    newMassive = newMassive.filter(
       (element) => element.label.includes(filterList.inputValue) === true
     );
   }
-  return (
-    <ol>
-      {caseMassive.map((element) => {
-        return <ListItem key={element.id} element={element} />;
-      })}
-    </ol>
-  );
+
+  let finishList = newMassive.map((element) => {
+    return <ListItem key={element.id} element={element} />;
+  });
+
+  return <ol>{finishList}</ol>;
 }
+
+function mapStateToProps(state) {
+  return {
+    filterList: state.filterList,
+    caseMassive: state.caseMassive,
+  };
+}
+
+export let List = connect(mapStateToProps)(CreateList);

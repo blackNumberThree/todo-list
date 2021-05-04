@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { mapDispatchToPropsDelChange as mapDispatchToProps } from "../action-creator";
 
 function CreateListItem({ element, dispatchDel, dispathChange }) {
   let { label, important, id } = element;
-
+  let [currentImportant, setCurrentImportant] = useState(important);
+  if (important !== currentImportant) {
+    setCurrentImportant(important);
+  }
   function deleteElement() {
     dispatchDel(id);
   }
@@ -12,8 +15,9 @@ function CreateListItem({ element, dispatchDel, dispathChange }) {
     dispathChange(id);
   }
 
+  console.log("mini-change");
   return (
-    <li className={important ? "important list-item" : "list-item"}>
+    <li className={currentImportant ? "important list-item" : "list-item"}>
       <button className="button-important" onClick={changeElement}>
         <i className="fa fa-exclamation"></i>
       </button>

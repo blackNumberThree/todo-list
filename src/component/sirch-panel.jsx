@@ -1,10 +1,7 @@
 import { mapDispatchToPropsFilter as mapDispatchToProps } from "../action-creator";
 import { connect } from "react-redux";
 
-function CreateSirchInput({ dispatchFilter, currentStore }) {
-  console.log(currentStore);
-  let filterList = currentStore.filterList;
-
+function CreateSirchInput({ dispatchFilter, filterList }) {
   function showImportant() {
     dispatchFilter({ ...filterList, importantFilter: true });
   }
@@ -54,4 +51,12 @@ function CreateSirchInput({ dispatchFilter, currentStore }) {
   );
 }
 
-export let SirchInput = connect(null, mapDispatchToProps)(CreateSirchInput);
+function mapStateToProps(state) {
+  return {
+    filterList: state.filterList,
+  };
+}
+export let SirchInput = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateSirchInput);

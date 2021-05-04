@@ -33,7 +33,6 @@ export const reducer = function (
       };
 
     case "CHNG":
-      console.log("hello");
       return {
         caseMassive: caseMassive.map((element, index) => {
           if (index === currenCaseId) {
