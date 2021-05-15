@@ -2,21 +2,21 @@ import { bindActionCreators } from "redux";
 
 const add = (prop) => {
   return {
-    type: "ADD",
+    type: "add",
     payload: prop,
   };
 };
 
 const del = (prop) => {
   return {
-    type: "DLT",
+    type: "delete",
     payload: prop,
   };
 };
 
 const changeImportant = (prop) => {
   return {
-    type: "CHNG",
+    type: "change",
     payload: prop,
   };
 };
