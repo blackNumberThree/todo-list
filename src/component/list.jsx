@@ -1,22 +1,22 @@
 import { ListItem } from "./List-item";
 import { connect } from "react-redux";
 
-
 function CreateList({ filterList, caseMassive }) {
   // accept massive and filter list and show handled massive
-  let newMassive = caseMassive;
-
+  let currentMassive = caseMassive;
   if (filterList.importantFilter) {
-    newMassive = newMassive.filter((element) => element.important === true);
+    currentMassive = currentMassive.filter(
+      (element) => element.important === true
+    );
   }
 
   if (filterList.inputFilter) {
-    newMassive = newMassive.filter(
+    currentMassive = currentMassive.filter(
       (element) => element.label.includes(filterList.inputValue) === true
     );
   }
 
-  let finishList = newMassive.map((element) => {
+  let finishList = currentMassive.map((element) => {
     return <ListItem key={element.id} element={element} />;
   });
 

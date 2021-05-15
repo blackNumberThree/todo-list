@@ -1,12 +1,9 @@
 import React from "react";
-import { createStore } from "redux";
-import { reducer } from "../reducer";
+import { store } from "../action-creator";
 import { Provider } from "react-redux";
 import { AddBlock } from "./Add-block";
 import { SirchInput } from "./Sirch-panel";
 import { List } from "./List";
-
-export const store = createStore(reducer);
 
 export function App() {
   return (

@@ -1,30 +1,19 @@
-let startMassive = [
-  {
-    label: "first",
-    important: true,
-    id: 1,
-  },
-  {
-    label: "second",
-    important: false,
-    id: 2,
-  },
-  {
-    label: "third",
-    important: true,
-    id: 3,
-  },
-];
+// let startMassive = [
+//   {
+//     label: "first",
+//     important: true,
+//     id: 1,
+//   },
+// ];
 
 export const reducer = function (
   state = {
-    caseMassive: startMassive,
+    caseMassive: [],
     filterList: { inputFilter: false, inputValue: "", importantFilter: false },
   },
   { type, payload }
 ) {
   let { caseMassive, filterList } = state;
-
   let currenCaseId =
     type === "delete" || type === "change"
       ? caseMassive.findIndex((element) => element.id === payload)
@@ -35,25 +24,20 @@ export const reducer = function (
         caseMassive: [...caseMassive, payload],
         filterList: { ...filterList },
       };
-
     case "setFilters":
       return { ...state, filterList: payload };
-
     case "delete":
-      console.log("del");
       return {
         caseMassive: caseMassive.filter((element, index) => {
           if (index !== currenCaseId) {
+            console.log(index, currenCaseId);
             return element;
           }
-          return { caseMassive, filterList };
         }),
-
         filterList: { ...filterList },
       };
 
     case "change":
-      console.log("chng");
       return {
         caseMassive: caseMassive.map((element, index) => {
           if (index === currenCaseId) {
@@ -63,7 +47,6 @@ export const reducer = function (
         }),
         filterList,
       };
-
     default:
       return { caseMassive, filterList };
   }

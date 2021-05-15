@@ -1,5 +1,7 @@
-import { mapDispatchToPropsFilter as mapDispatchToProps } from "../action-creator";
+import { dispatchFilter } from "../action-creator";
 import { connect } from "react-redux";
+import classNames from "classnames";
+import styles from "../style.module.css";
 
 function CreateSirchInput({ dispatchFilter, filterList }) {
   function showImportant() {
@@ -27,15 +29,19 @@ function CreateSirchInput({ dispatchFilter, filterList }) {
 
   return (
     <>
-      <div className="find-block">
+      <div className={styles.findBlock}>
         <button
-          className={filterList.importantFilter ? "" : "red-shadow"}
+          className={classNames({
+            [styles.redShadow]: !filterList.importantFilter,
+          })}
           onClick={showAll}
         >
           All case
         </button>
         <button
-          className={filterList.importantFilter ? "red-shadow" : ""}
+          className={classNames({
+            [styles.redShadow]: filterList.importantFilter,
+          })}
           onClick={showImportant}
         >
           only important
@@ -56,6 +62,11 @@ function mapStateToProps(state) {
     filterList: state.filterList,
   };
 }
+export const mapDispatchToProps = () => {
+  return {
+    dispatchFilter: (payload) => dispatchFilter(payload),
+  };
+};
 export let SirchInput = connect(
   mapStateToProps,
   mapDispatchToProps

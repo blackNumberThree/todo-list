@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { mapDispatchToPropsDelChange as mapDispatchToProps } from "../action-creator";
+import { dispatchDel, dispathChange } from "../action-creator";
+import classNames from "classnames";
+import styles from "../style.module.css";
 
-function CreateListItem({ element, dispatchDel, dispathChange }) {
+export function ListItem({ element }) {
   let { label, important, id } = element;
   let [currentImportant, setCurrentImportant] = useState(important);
   if (important !== currentImportant) {
@@ -14,19 +15,21 @@ function CreateListItem({ element, dispatchDel, dispathChange }) {
   function changeElement() {
     dispathChange(id);
   }
-
-  console.log("mini-change");
+  console.log("minichange");
   return (
-    <li className={currentImportant ? "important list-item" : "list-item"}>
-      <button className="button-important" onClick={changeElement}>
+    <li
+      className={classNames(
+        { [styles.important]: currentImportant },
+        "list-item"
+      )}
+    >
+      <button className={styles.buttonImportant} onClick={changeElement}>
         <i className="fa fa-exclamation"></i>
       </button>
       <span>{label}</span>
-      <button className="button-delete" onClick={deleteElement}>
+      <button className={styles.buttonDelete} onClick={deleteElement}>
         <i className="fa fa-trash-o"></i>
       </button>
     </li>
   );
 }
-
-export let ListItem = connect(null, mapDispatchToProps)(CreateListItem);

@@ -1,4 +1,10 @@
 import { bindActionCreators } from "redux";
+import { createStore } from "redux";
+import { reducer } from "./reducer";
+
+export const store = createStore(reducer);
+
+let dispatch = store.dispatch;
 
 const add = (prop) => {
   return {
@@ -28,25 +34,9 @@ export const setFilters = (prop) => {
   };
 };
 
-export const mapDispatchToPropsAdd = (dispatch) => {
-  const dispatchNewCase = bindActionCreators(add, dispatch);
-  return {
-    dispatchNewCase: (payload) => dispatchNewCase(payload),
-  };
-};
+export const dispathChange = bindActionCreators(changeImportant, dispatch);
+export const dispatchDel = bindActionCreators(del, dispatch);
+export const dispatchNewCase = bindActionCreators(add, dispatch);
+export const dispatchFilter = bindActionCreators(setFilters, dispatch);
 
-export const mapDispatchToPropsDelChange = (dispatch) => {
-  const dispathChange = bindActionCreators(changeImportant, dispatch);
-  const dispatchDel = bindActionCreators(del, dispatch);
-  return {
-    dispatchDel: (payload) => dispatchDel(payload),
-    dispathChange: (payload) => dispathChange(payload),
-  };
-};
 
-export const mapDispatchToPropsFilter = (dispatch) => {
-  const dispatchFilter = bindActionCreators(setFilters, dispatch);
-  return {
-    dispatchFilter: (payload) => dispatchFilter(payload),
-  };
-};

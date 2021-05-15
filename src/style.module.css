@@ -1,43 +1,43 @@
-.main-block {
+.mainBlock {
   display: inline-block;
   min-width: 250px;
   margin: 10px 10px 0 10px;
   padding: 40px;
   border: 1px solid black;
 }
-.find-block button {
+.findBlock button {
   font-size: 18px;
   margin: 0 10px 5px 0;
 }
 input {
   font-size: 18px;
 }
-.find-block input {
+.findBlock input {
   width: 210px;
 }
-.input-block {
+.inputBlock {
   display: flex;
   align-items: center;
 }
-.red-shadow {
+.redShadow {
   border-color: rgba(255, 0, 0, 0.788);
   box-shadow: inset 0 0 5px 1px red;
 }
-.todo-list {
+.todoList {
   padding: 0;
 }
-.list-item {
+.listItem {
   margin: 1px 0;
   font-size: 20px;
 }
 .important {
   color: red;
 }
-.button-delete {
+.buttonDelete {
   margin: 0 10px;
   color: rgb(255, 0, 0);
 }
-.button-important {
+.buttonImportant {
   margin: 3px 10px 3px 5px;
   color: rgb(172, 172, 0);
 }

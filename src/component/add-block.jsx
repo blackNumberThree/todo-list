@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { mapDispatchToPropsAdd as mapDispatchToProps } from "../action-creator";
-
+import { dispatchNewCase } from "../action-creator";
+import styles from "../style.module.css";
 
 function CreateAddBlock({ dispatchNewCase }) {
   let [inputValue, useinputValue] = useState("");
-
   function formChange(event) {
     useinputValue(event.target.value);
   }
@@ -18,23 +17,31 @@ function CreateAddBlock({ dispatchNewCase }) {
       id: Date.now(),
     };
 
-    dispatchNewCase(newCase);
+    if (inputValue) {
+      dispatchNewCase(newCase);
+    }
 
     useinputValue("");
   }
   return (
-    <div className="input-block">
+    <div className={styles.inputBlock}>
       <input
         type="text"
         onChange={formChange}
         value={inputValue}
         placeholder="input new case"
       />
-      <button className="addCase" onClick={addCase} value={inputValue}>
+      <button className={styles.addCase} onClick={addCase} value={inputValue}>
         ADD
       </button>
     </div>
   );
 }
+
+const mapDispatchToProps = () => {
+  return {
+    dispatchNewCase: (payload) => dispatchNewCase(payload),
+  };
+};
 
 export let AddBlock = connect(null, mapDispatchToProps)(CreateAddBlock);
